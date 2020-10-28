@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="linepipe",
-    use_version_scm=True,
+    use_scm_version=True,
     packages=find_packages(),
     setup_requires=[
         "setuptools_scm",
