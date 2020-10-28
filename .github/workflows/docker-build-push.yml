@@ -27,7 +27,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: nx.astroconda.org/painengine/linepipe:latest
+          tags: nx.astroconda.org/linepipe:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
