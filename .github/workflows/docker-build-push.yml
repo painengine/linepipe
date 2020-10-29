@@ -12,6 +12,10 @@ jobs:
         id: clone
         uses: actions/checkout@v2
 
+      - name: Set build variables
+        id: vars
+        run: echo ::set-output name=scm_version::$(python setup.py --version)
+
       # build-push-action@v2 is not working (yet?)
       - name: Build and push
         id: docker_build
@@ -21,6 +25,7 @@ jobs:
           username: ${{ secrets.NEXUS_DOCKER_USERNAME }}
           password: ${{ secrets.NEXUS_DOCKER_PASSWORD }}
           repository: painengine/linepipe
+          tags: ${{ steps.vars.output.scm_version }}
           tag_with_ref: true
           add_git_labels: true
 
